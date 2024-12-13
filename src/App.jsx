@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Suspense } from 'react';
 import {
   About,
   Blogs,
@@ -13,35 +14,63 @@ import MainLayout from './Layouts/MainLayout';
 const App = () => {
   const router = createBrowserRouter([
     {
-      element: <MainLayout />, // Main layout for all routes
+      element: <MainLayout />,
       children: [
         {
           path: '/',
-          element: <Home />, // Route for the home page
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Home /> {/* Lazy-loaded Home */}
+            </Suspense>
+          ),
         },
         {
           path: '/about',
-          element: <About />, // Route for the about page
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <About /> {/* Lazy-loaded About */}
+            </Suspense>
+          ),
         },
         {
           path: '/blogs',
-          element: <Blogs />, // Route for the blogs page
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Blogs /> {/* Lazy-loaded Blogs */}
+            </Suspense>
+          ),
         },
         {
           path: '/contact',
-          element: <Contact />, // Route for the contact page
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Contact /> {/* Lazy-loaded Contact */}
+            </Suspense>
+          ),
         },
         {
           path: '/projects',
-          element: <Projects />, // Route for the projects page
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Projects /> {/* Lazy-loaded Projects */}
+            </Suspense>
+          ),
         },
         {
           path: '/services',
-          element: <Services />, // Route for the services page
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Services /> {/* Lazy-loaded Services */}
+            </Suspense>
+          ),
         },
         {
           path: '/team',
-          element: <Team />, // Route for the team page
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Team /> {/* Lazy-loaded Team */}
+            </Suspense>
+          ),
         },
       ],
     },
@@ -49,4 +78,5 @@ const App = () => {
 
   return <RouterProvider router={router} />;
 };
+
 export default App;
